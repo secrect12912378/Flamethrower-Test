@@ -1,0 +1,24 @@
+<configs>
+<append xpath="/buffs">
+<buff name="buffFlameThrower" >
+			<damage_type value="disease"/>
+			<stack_type value="replace"/>
+			<duration value="8"/>
+			<update_rate value="1"/>
+			<effect_group>
+			<requirement name="EntityTagCompare" target="self" tags="zombie"/>
+				<passive_effect name="HealthChangeOT" operation="base_subtract" duration="2,8" value="15,20"/>
+				
+				
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="self" buff="buffBurning"/>
+				<triggered_effect trigger="onSelfBuffStart" action="AddBuff" target="selfAOE" range="1" buff="buffIncendiaryRound">
+					<requirement name="RandomRoll" seed_type="Random" target="self" min_max="0,100" operation="LTE" value="60"/>
+				</triggered_effect>
+					
+				
+			</effect_group>
+		</buff>
+
+
+</append>
+</configs>

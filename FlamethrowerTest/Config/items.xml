@@ -1,0 +1,101 @@
+<configs>
+<append xpath="/items">
+<item name="mayicgunFlamethrower">
+			<property name="Tags" value="test,customBlade,customLaser,customGrip,weapon,ranged,holdBreathAiming,reloadPenalty,gun,revolver,selfLoading"/>
+			<property name="DisplayType" value="rangedGun"/>
+			<property name="HoldType" value="19"/>
+			<property name="Meshfile" value="#@modfolder:Resources/Flametest.unity3d?FlamethrowerPrefab"/>
+			<property name="CustomIcon" value="7flamethrower"/>
+			<property name="DescriptionKey" value="mayicgunFlamethrowerDesc"/>
+			<property name="Material" value="MayicScrapGun"/>
+			<property name="Weight" value="100"/>
+			<property name="CrosshairOnAim" value="true"/>
+			<property name="CrosshairUpAfterShot" value="true"/>
+			<property name="RepairTools" value="resourceRepairKit"/>
+			<property name="Group" value="FirearmsCustom,AllFirearm,SpecFirearm"/>
+			<property name="DegradationBreaksAfter" value="false"/>
+			<property name="SoundJammed" value="weapon_jam"/>
+			<property name="Sound_Sight_In" value="rifle_sight_in"/>
+			<property name="Sound_Sight_Out" value="rifle_sight_out"/>
+			<property name="RepairExpMultiplier" value="10.8"/>
+			<property name="CraftingSkillGroup" value="craftSkillGuns"/>
+			<property name="EconomicValue" value="9000"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property class="Action0">
+				<property name="Class" value="Ranged"/>
+				<property name="Magazine_items" value="mayicammoFlameFuel,mayicammoExplosiveround"/>
+				<property name="Sound_start" value=""/>
+				<property name="Sound_end" value=""/>
+				<property name="Sound_empty" value="weapon_empty"/>
+				<property name="Sound_reload" value="ak47_reload"/>
+				<property name="Particles_muzzle_fire" value=""/>
+				<property name="Particles_muzzle_smoke" value=""/></property>
+			<property class="Action1">
+				<property name="Class" value="Zoom"/>
+				<property name="Zoom_max_out" value="55"/>
+				<property name="Zoom_max_in" value="55"/>
+				<property name="ScopeCameraOffset" value="-0.00062,0,0.055"/></property>
+			<effect_group name="Base Effects">
+				<passive_effect name="MaxRange" operation="base_set" value="20"/>
+				<passive_effect name="DamageFalloffRange" operation="base_set" value="15"/>
+				<passive_effect name="EntityDamage" operation="base_add" value="1"/>
+				<passive_effect name="RoundsPerMinute" operation="base_set" value="300"/>
+				<passive_effect name="BurstRoundCount" operation="base_set" value="10000"/>
+				<passive_effect name="MagazineSize" operation="base_set" value="200"/>
+				<passive_effect name="ReloadSpeedMultiplier" operation="base_set" value=".4"/>
+				<passive_effect name="WalkSpeed" operation="base_set" value="0.75"/>
+				<passive_effect name="RunSpeed" operation="base_set" value="0.85"/>
+				<passive_effect name="SpreadDegreesVertical" operation="base_set" value="4"/>
+				<passive_effect name="SpreadDegreesHorizontal" operation="base_set" value="4"/>
+				<passive_effect name="SpreadMultiplierAiming" operation="base_set" value=".4"/>
+				<passive_effect name="SpreadMultiplierCrouching" operation="base_set" value=".4"/>
+				<passive_effect name="SpreadMultiplierWalking" operation="base_set" value="1.2"/>
+				<passive_effect name="SpreadMultiplierRunning" operation="base_set" value="1.8"/>
+				<passive_effect name="KickDegreesVertical" operation="base_set" value="-.02,.02"/>
+				<passive_effect name="KickDegreesHorizontal" operation="base_set" value="-.02,.02"/>
+				<display_value name="dRecoil" value="2" />
+				<passive_effect name="IncrementalSpreadMultiplier" operation="base_set" value="1.2"/>
+				<passive_effect name="WeaponHandling" operation="base_set" value="1.5"/>
+				<passive_effect name="DegradationMax" operation="base_set" value="3000,9000" tier="1,6"/>
+				<passive_effect name="DegradationPerUse" operation="base_set" value="1"/>
+				<passive_effect name="ModSlots" operation="base_set" value="0,5" tier="1,6"/>
+				<passive_effect name="ModPowerBonus" operation="perc_add" value="0.1" tags="EntityDamage"/>
+				<passive_effect name="ModPowerBonus" operation="base_add" value="200" tags="EconomicValue"/>
+				<triggered_effect trigger="onSelfPrimaryActionStart" action="AnimatorSetBool" target="self" property="shooting" value="true"/>
+				<triggered_effect trigger="onSelfPrimaryActionEnd" action="AnimatorSetBool" target="self" property="shooting" value="false"/>
+			</effect_group>
+		</item>
+		
+		
+		<item name="mayicammoFlameFuel">
+			<property name="Extends" value="mayicammo10mm"/>
+			<property name="DescriptionKey" value="mayicammoFlameFuelDesc"/>
+			<property name="CustomIcon" value="7flamefuel"/>
+			<property name="EconomicValue" value="22"/>
+			<property name="EconomicBundleSize" value="1"/>
+			<property name="Group" value="Ammo/Weapons,allRounds,specialAmmo"/>
+			<effect_group name="Base Effects" tiered="false">
+				<passive_effect name="EntityDamage" operation="base_set" value="3"/>
+				<passive_effect name="BlockDamage" operation="base_set" value="20"/>
+				<passive_effect name="DismemberChance" operation="base_set" value="0" tags="head"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.9" tags="earth,metal,stone"/>
+				<passive_effect name="DamageModifier" operation="perc_add" value="1" tags="wood"/>	
+				<passive_effect name="DamageModifier" operation="perc_add" value="-.2" tags="head"/>	
+				<triggered_effect trigger="onSelfDamagedOther" action="AddBuff" target="other" buff="buffFlameThrower"/>
+				<triggered_effect trigger="onSelfDamagedOther" action="RemoveBuff" target="self" buff="buffFlameThrower"/>
+			
+			</effect_group>
+		</item>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</append>
+		</configs>
